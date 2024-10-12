@@ -4,4 +4,4 @@ namespace: dd-env
 replicaCount: 1
 components:
   dev_env:
-    docker_image: jupyter/docker-stacks-foundation:latest
+    docker_image: nvcr.io/nvidia/pytorch:24.08-py3
