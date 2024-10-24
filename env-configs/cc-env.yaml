@@ -4,4 +4,4 @@ namespace: cc-env
 replicaCount: 1
 components:
   dev_env:
-    docker_image: nvidia/cuda:11.8.0-devel-ubuntu22.04
+    docker_image: jupyter/docker-stacks-foundation:latest
