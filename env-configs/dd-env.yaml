@@ -6,4 +6,4 @@ gpu_enabled: true
 gpu_limit: 7
 components:
   dev_env:
-    docker_image: jupyter/docker-stacks-foundation:latest
+    docker_image: nvcr.io/nvidia/pytorch:24.03-py3
