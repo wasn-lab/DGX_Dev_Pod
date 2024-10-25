@@ -3,7 +3,7 @@ createdBy: castle.cheng
 namespace: dd-env
 replicaCount: 1
 gpu_enabled: true
-gpu_limit: 7
+gpu_limit: 8
 components:
   dev_env:
     docker_image: nvcr.io/nvidia/pytorch:24.03-py3
