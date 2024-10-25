@@ -2,7 +2,7 @@ description: 'castle k8s env'
 createdBy: castle.cheng
 namespace: dd-env
 replicaCount: 1
-gpu_enable: true
+gpu_enabled: true
 gpu_limit: 8
 components:
   dev_env:
