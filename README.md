@@ -1,23 +1,26 @@
-# Dev Pod
+# DGX Dev Pod
+[![See latest](https://img.shields.io/static/v1?label=Docs&message=see%20latest&color=blue)](https://github.com/wasn-lab/DGX_Dev_Pod/blob/main/README.md)
+### 隨開即用的開發環境
+![](./docs/assets/start-using.png)
 
-## 隨開即用的開發環境
-![](./docs/assets/welcome.png)
+## What is DGX Dev Pod?
+The DGX Dev Pod is a platform that allows WASN students to dynamically create development environments base on Kubernetes Pod. It utilizes [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) in conjunction with [Helm](https://helm.sh/) to establish an automated deployment flow. Students simply create their own configuration file, and ArgoCD will quickly set up a development environment that includes a [code-server](https://github.com/coder/code-server) based on the Docker image specified in the file.
+## Getting started
+### Prerequisite
+- 為了資安考量，這個系統目前只允許內網存取。請先連線至WASN實驗室內網
+    - 你可以也透過實驗室VPN或連接WASN實驗室的Wifi
 
-## Prerequisite
-- 請先連線至WASN實驗室內網
-    - 透過VPN或連線至WASN實驗室的Wifi
-
-## 📝創建你的環境設定檔
+### 📝Creating Configuration File
 - 請至DGX_Dev_Pod專案中的[env-configs/](/env-configs/)建立一份屬於你的環境設定檔
     - 為你自己的環境命名，例如：`castle-env`，我就創建檔案：`castle-env.yaml`
-    - 你可以直接複製以下模板，並填入你的namespace、你需要使用的docker image名稱
+    - 你可以直接複製以下模板，並填入你的namespace、你需要使用的docker image名稱以及是否要使用GPU
       - ```
         # 你的名字
         createdBy: castle.cheng
         #-----------------------------
 
         # 請為你的kubernetes的namespace命名，用來分隔不同使用者的環境，這個名稱也會用於創建屬於你的domain name網址
-        # 例如: cc-env 你的環境就會是 https://cc-env.dev-pod.wasnlab.net
+        # 例如: castle-env 你的環境就會是 https://castle-env.dev-pod.wasnlab.net
         namespace: castle-env
 
         # 填入你開發環境內要使用的Docker image，需要填寫完整docker image name跟tag
@@ -27,18 +30,27 @@
         # 是否要使用GPU
         gpu_enabled: false
 
-## ☕️等待建立環境
+        ```
+
+- 你可以直接在GitHub頁面上建立檔案，或是你將這個專案clone到你的電腦，再透過Git將你新建的設定檔推送到這個repositoy的main branch上
+
+### ☕️Waiting for Deployment
 - 建立好你的環境設定檔之後，等待3~5分鐘你專屬的環境就會建立完成
     - 這段時間會由[ArgoCD](https://argo-cd.readthedocs.io/en/stable/)讀取你剛剛建立的設定檔，並且透過[Helm](https://helm.sh/)在DGX的kubernetes cluster上創建你的namespace並下載你所需要的docker image，最後啟動[code-server](https://github.com/coder/code-server)，你就能透過瀏覽器直接連線到container內開發！
-## 🎉開始使用
+### 📊Monitoring ArgoCD Deployment
+- 你也能透過GitHub登入ArgoCD的儀表板：https://argocd.dev-pod.wasnlab.net/ 確認你的環境是否成功建立或遇到任何錯誤訊息
+    - 你能在這裡找到你的環境，用以確認所有Kubernetes元件的部署情況以及Pod的log
+    - 命名規則是：`env-config-<你的namespace>`
+    - ![argocd](./docs/assets/argocd.png)
+    - ![argocd-env](./docs/assets/argocd-env.png)
+
+### 🎉Start Using
 - 請在瀏覽器輸入：`https://<你的環境名稱>.dev-pod.wasnlab.net`
-    - `<你的環境名稱>`請換成你填寫在yaml檔裡`namespace`欄位的值（例如我的環境名稱是castle-env，那我的網址就是`https://cc-env.dev-pod.wasnlab.net`）
-    - 由於現在我們還沒有使用HTTPS憑證，因此瀏覽器會顯示不安全（未來會加上憑證QQ）
-    - ![截圖 2024-10-27 下午11.26.00](./docs/assets/castle-env-url.png)
+    - `<你的環境名稱>`請換成你填寫在yaml檔裡`namespace`欄位的值（例如我的環境名稱是`castle-env`，那我的網址就是`https://castle-env.dev-pod.wasnlab.net`）
 - 輸入密碼：`wasn`
     - ![截圖 2024-10-27 下午11.26.10](./docs/assets/login-code-server.png)
-- 開始使用！
+- 歡迎！
     - ![start-using-code-server](./docs/assets/start-using.png)
-## 📊監控ArgoCD部署情況
-- 透過ArgoCD的儀表板：https://argocd.dev-pod.wasnlab.net/
-    - ![argocd](./docs/assets/argocd.png)
+
+### ⚠️ Note
+ - 這邊建立的開發環境是暫時的，將資料存放在`/home/code-server`預設目錄底下才會被妥善的保存在NAS上，其餘環境例如：python套件安裝將會在Pod被重新建立時消失。 Pod可能會在你更改設定檔中的docker image時、或GPU的設定有改動時重建，因此強烈建議使用requirements.txt, [Poetry](https://python-poetry.org/)或其他套件管理工具來確保你開發所需要的套件是固定的
