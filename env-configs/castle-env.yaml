@@ -8,7 +8,7 @@ namespace: castle-env
 
 # 填入你開發環境內要使用的Docker image，需要填寫完整docker image name跟tag
 # 例如: jupyter/docker-stacks-foundation:latest
-docker_image: jupyter/scipy-notebook:latest
+docker_image: pytorch/pytorch:2.3.1-cuda12.1-cudnn8-runtime
 
 # 是否要使用GPU
 gpu_enabled: false
