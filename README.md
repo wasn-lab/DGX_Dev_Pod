@@ -1,11 +1,30 @@
 # DGX Dev Pod
 [![See latest](https://img.shields.io/static/v1?label=Docs&message=see%20latest&color=blue)](https://github.com/wasn-lab/DGX_Dev_Pod/blob/main/README.md)
+[!["Join us on WASN Lab"](https://img.shields.io/badge/join_us-WASN_Lab-gray.svg?colorB=brightgreen)](https://wasn.csie.ncu.edu.tw/)
+!["WASN DGX"](https://img.shields.io/badge/WASN-DGX-gray.svg?colorB=purple)
 ### 隨開即用的開發環境
 ![](./docs/assets/start-using.png)
 
+<!-- toc -->
+- [What is DGX Dev Pod?](#what-is-dgx-dev-pod)
+- [More About Dev Pod](#)
+- [Getting Started](#getting-started)
+    - [Prerequisite](#prerequisite)
+    - [Creating Configuration File](#creating-configuration-file)
+    - [Waiting for Deployment](#️waiting-for-deployment)
+    - [Monitoring ArgoCD Deployment](#monitoring-argocd-deployment)
+    - [Start Using](#start-using)
+    - [Note](#️-note)
+- [Update Your Environment](#update-your-environment)
+<!-- tocstop -->
+
 ## What is DGX Dev Pod?
-The DGX Dev Pod is a platform that allows WASN students to dynamically create development environments base on Kubernetes Pod. It utilizes [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) in conjunction with [Helm](https://helm.sh/) to establish an automated deployment flow. Students simply create their own configuration file, and ArgoCD will quickly set up a development environment that includes a [code-server](https://github.com/coder/code-server) based on the Docker image specified in the file.
-## Getting started
+The DGX Dev Pod is a platform that allows WASN students to dynamically create development environments base on Kubernetes Pod. Students simply create their own configuration file, and ArgoCD will quickly set up a development environment that includes a [code-server](https://github.com/coder/code-server) based on the Docker image specified in the file.
+
+## More About Dev Pod
+Dev Pod utilizes [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) and [Helm](https://helm.sh/) to establish an automated deployment flow.
+
+## Getting Started
 ### Prerequisite
 - 為了資安考量，這個系統目前只允許內網存取。請先連線至WASN實驗室內網
     - 你可以也透過實驗室VPN或連接WASN實驗室的Wifi
@@ -54,3 +73,6 @@ The DGX Dev Pod is a platform that allows WASN students to dynamically create de
 
 ### ⚠️ Note
  - 這邊建立的開發環境是暫時的，將資料存放在`/home/code-server`預設目錄底下才會被妥善的保存在NAS上，其餘環境例如：python套件安裝將會在Pod被重新建立時消失。 Pod可能會在你更改設定檔中的docker image時、或GPU的設定有改動時重建，因此強烈建議使用requirements.txt, [Poetry](https://python-poetry.org/)或其他套件管理工具來確保你開發所需要的套件是固定的
+
+## Update Your Environment
+- 如果你需要改用其他的Docker image作為開發環境，你可以直接修改你所創建的環境設定檔，重新git push之後就會驅動ArgoCD部署一個新的環境給你，大約需要等待5分鐘，你可以透過GitHub登入ArgoCD的儀表板：https://argocd.dev-pod.wasnlab.net/ 確認你的環境是否成功建立或遇到任何錯誤訊息
