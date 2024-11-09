@@ -41,7 +41,7 @@ Dev Pod utilizes [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) and [Helm](
         #-----------------------------
 
         # 請為你的kubernetes的namespace命名，用來分隔不同使用者的環境，這個名稱也會用於創建屬於你的domain name網址
-        # 例如: castle-env 你的環境就會是 https://castle-env.dev-pod.wasnlab.net
+        # 例如: castle-env 你的環境就會是 https://castle-env.dgx.wasnlab.net
         namespace: castle-env
 
         # 填入你開發環境內要使用的Docker image，需要填寫完整docker image name跟tag
@@ -59,15 +59,15 @@ Dev Pod utilizes [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) and [Helm](
 - 建立好你的環境設定檔之後，等待3~5分鐘你專屬的環境就會建立完成
     - 這段時間會由[ArgoCD](https://argo-cd.readthedocs.io/en/stable/)讀取你剛剛建立的設定檔，並且透過[Helm](https://helm.sh/)在DGX的kubernetes cluster上創建你的namespace並下載你所需要的docker image，最後啟動[code-server](https://github.com/coder/code-server)，你就能透過瀏覽器直接連線到container內開發！
 ### 📊Monitoring ArgoCD Deployment
-- 你也能透過GitHub登入ArgoCD的儀表板：https://argocd.dev-pod.wasnlab.net/ 確認你的環境是否成功建立或遇到任何錯誤訊息
+- 你也能透過GitHub登入ArgoCD的儀表板：https://argocd.dgx.wasnlab.net/ 確認你的環境是否成功建立或遇到任何錯誤訊息
     - 你能在這裡找到你的環境，用以確認所有Kubernetes元件的部署情況以及Pod的log
     - 命名規則是：`env-config-<你的namespace>`
     - ![argocd](./docs/assets/argocd.png)
     - ![argocd-env](./docs/assets/argocd-env.png)
 
 ### 🎉Start Using
-- 請在瀏覽器輸入：`https://<你的環境名稱>.dev-pod.wasnlab.net`
-    - `<你的環境名稱>`請換成你填寫在yaml檔裡`namespace`欄位的值（例如我的環境名稱是`castle-env`，那我的網址就是`https://castle-env.dev-pod.wasnlab.net`）
+- 請在瀏覽器輸入：`https://<你的環境名稱>.dgx.wasnlab.net`
+    - `<你的環境名稱>`請換成你填寫在yaml檔裡`namespace`欄位的值（例如我的環境名稱是`castle-env`，那我的網址就是`https://castle-env.dgx.wasnlab.net`）
 - 輸入密碼：`wasn`
     - ![截圖 2024-10-27 下午11.26.10](./docs/assets/login-code-server.png)
 - 歡迎！
@@ -78,4 +78,4 @@ Dev Pod utilizes [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) and [Helm](
  - 使用太舊的container image來創造環境可能會讓code-server無法正常安裝，你將會在ArgoCD看到pod不斷的被重啟，請更換較新的container image或是跟管理員聯絡。
 
 ## Update Your Environment
-- 如果你需要改用其他的Docker image作為開發環境，你可以直接修改你所創建的環境設定檔，重新git push之後就會驅動ArgoCD部署一個新的環境給你，大約需要等待5分鐘，你可以透過GitHub登入ArgoCD的儀表板：https://argocd.dev-pod.wasnlab.net/ 確認你的環境是否成功建立或遇到任何錯誤訊息
+- 如果你需要改用其他的Docker image作為開發環境，你可以直接修改你所創建的環境設定檔，重新git push之後就會驅動ArgoCD部署一個新的環境給你，大約需要等待5分鐘，你可以透過GitHub登入ArgoCD的儀表板：https://argocd.dgx.wasnlab.net/ 確認你的環境是否成功建立或遇到任何錯誤訊息
