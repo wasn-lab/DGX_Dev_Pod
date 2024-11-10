@@ -95,3 +95,10 @@ This project is hosted on a on-premises Kubernetes cluster and utilizes a GitOps
 
 ## Update Your Environment
 - 如果你需要改用其他的Docker image作為開發環境，你可以直接修改你所創建的環境設定檔，重新`git push`之後就會驅動ArgoCD更新你的pod環境，大約需要等待5分鐘，你可以透過GitHub登入ArgoCD的儀表板：https://argocd.dgx.wasnlab.net/ 確認你的環境是否成功建立或遇到任何錯誤訊息
+
+
+## 📝Learning
+- 對Kubernetes或Helm有興趣的同學可以跟偉竣聯絡，我們可以為你解析這個專案搭建的技術
+    - [wasn_infra](https://github.com/wasn-lab/wasn_infra/tree/main/DGX)
+        - Include all Helm settings and deployment yaml
+        - This repository requires permissions in [wasn-lab](https://github.com/wasn-lab) to access
