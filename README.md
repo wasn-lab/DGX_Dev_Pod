@@ -2,7 +2,7 @@
 [![See latest](https://img.shields.io/static/v1?label=Docs&message=see%20latest&color=blue)](https://github.com/wasn-lab/DGX_Dev_Pod/blob/main/README.md)
 [!["Join us on WASN Lab"](https://img.shields.io/badge/join_us-WASN_Lab-gray.svg?colorB=brightgreen)](https://wasn.csie.ncu.edu.tw/)
 !["WASN DGX"](https://img.shields.io/badge/WASN-DGX-gray.svg?colorB=purple)
-### 隨開即用的開發環境
+### 隨心所欲的開發環境
 ![](./docs/assets/start-using.png)
 
 <!-- toc -->
@@ -21,10 +21,12 @@
 <!-- tocstop -->
 
 ## What is DGX Dev Pod?
-The DGX Dev Pod is a platform that allows WASN students to dynamically create development environments base on Kubernetes Pod. Students simply create their own configuration file, and ArgoCD will quickly set up a development environment that includes a [code-server](https://github.com/coder/code-server) based on the Docker image specified in the file.
+The DGX Dev Pod is an experimental platform that allows students to freely choose the development environment they want to use.
 
-## More About Dev Pod
-Dev Pod utilizes [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) and [Helm](https://helm.sh/) to establish an automated deployment flow.
+## More About DGX Dev Pod
+DGX Dev Pod utilizes [Kubernetes](https://kubernetes.io/), [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) and [Helm](https://helm.sh/) to establish an automated deployment flow.
+
+This project is hosted on a on-premises Kubernetes cluster and utilizes a GitOps flow to enable version control for infrastructure configurations. ArgoCD plays a crucial role in this project, allowing students to flexibly choose the container image they need for experiments. ArgoCD continuously monitors the `main` branch of this Git repository. Students simply need to `git push` their environment configuration YAML files to the Git repository, and ArgoCD will automatically create a dedicated namespace for the student, provision a Kubernetes Pod and Ingress within that namespace, and launch [code-server](https://github.com/coder/code-server) in the Pod to accept external connections. This setup allows students to directly access a VS Code-like editor from their web browser to write code and conduct experiments.
 
 ![DGX](./docs/assets/DGX-architecture.png)
 
