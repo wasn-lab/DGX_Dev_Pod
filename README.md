@@ -62,20 +62,23 @@ Dev Pod utilizes [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) and [Helm](
 - 你也能透過GitHub登入ArgoCD的儀表板：https://argocd.dgx.wasnlab.net/ 確認你的環境是否成功建立或遇到任何錯誤訊息
     - 你能在這裡找到你的環境，用以確認所有Kubernetes元件的部署情況以及Pod的log
     - 命名規則是：`env-config-<你的namespace>`
+    > 你登入的GitHub帳號必須要是[wasn-lab](https://github.com/wasn-lab)的`Members`或`Owner` team member才能看到ArgoCD的內容，你可以向WASN實驗室的管理員提出申請
+
     - ![argocd](./docs/assets/argocd.png)
     - ![argocd-env](./docs/assets/argocd-env.png)
 
 ### 🎉Start Using
 - 請在瀏覽器輸入：`https://<你的環境名稱>.dgx.wasnlab.net`
     - `<你的環境名稱>`請換成你填寫在yaml檔裡`namespace`欄位的值（例如我的環境名稱是`castle-env`，那我的網址就是`https://castle-env.dgx.wasnlab.net`）
-- 輸入密碼：`wasn`
-    - ![截圖 2024-10-27 下午11.26.10](./docs/assets/login-code-server.png)
 - 歡迎！
     - ![start-using-code-server](./docs/assets/start-using.png)
 
 ### ⚠️ Note
- - 這邊建立的開發環境是暫時的，將資料存放在`/home/code-server`預設目錄底下才會被妥善的保存在NAS上，其餘環境例如：python套件安裝將會在Pod被重新建立時消失。 Pod可能會在你更改設定檔中的docker image時、或GPU的設定有改動時重建，因此強烈建議使用requirements.txt, [Poetry](https://python-poetry.org/)或其他套件管理工具來確保你開發所需要的套件是固定的
- - 使用太舊的container image來創造環境可能會讓code-server無法正常安裝，你將會在ArgoCD看到pod不斷的被重啟，請更換較新的container image或是跟管理員聯絡。
+ - 這邊建立的開發環境是暫時的，將資料存放在`/home/code-server`預設目錄底下才會被妥善的保存，其餘環境例如：已安裝的python套件將會在Pod被重新建立時消失。 Pod可能會在你更改container image、GPU的設定有改動或系統更新時重建，因此強烈建議使用`requirements.txt`, [Poetry](https://python-poetry.org/)或其他套件管理工具來確保你開發所需要的套件是固定的
+ - 使用太舊的container image來創造環境可能會讓code-server無法正常安裝，你將會在ArgoCD看到pod不斷的被重啟，請更換較新的container image或是跟管理員聯絡。如果你不知道該用什麼container image，你可以參考[env-configs](/env-configs/)中其他同學的設定
+    - 目前確認可用的container image清單：
+        - `hazdzz/dgx-torch:1.0.4`
+        - `pytorch/pytorch:2.3.1-cuda12.1-cudnn8-runtime`
 
 ## Update Your Environment
 - 如果你需要改用其他的Docker image作為開發環境，你可以直接修改你所創建的環境設定檔，重新git push之後就會驅動ArgoCD部署一個新的環境給你，大約需要等待5分鐘，你可以透過GitHub登入ArgoCD的儀表板：https://argocd.dgx.wasnlab.net/ 確認你的環境是否成功建立或遇到任何錯誤訊息
