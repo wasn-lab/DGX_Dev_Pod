@@ -12,3 +12,5 @@ docker_image: hazdzz/dgx-torch:1.0.0
 
 # 是否要使用GPU
 gpu_enabled: false
+
+shared_memory_enabled: true
