@@ -89,6 +89,8 @@ This project is hosted on a on-premises Kubernetes cluster and utilizes a GitOps
         - ![Grafana](./docs/assets/grafana.png)
     - [Kubernetes / Compute Resources / Namespace (Pods)](https://grafana.dgx.wasnlab.net/d/85a562078cdf77779eaa1add43ccec1e/kubernetes-compute-resources-namespace-pods?orgId=1&refresh=30s&from=now-1h&to=now)Select a specific namespace to view detailed resource usage for that namespace.
         - ![Grafana-pod](/docs/assets/grafana-pod.png)
+    - [NVIDIA GPU Dashboard](https://grafana.dgx.wasnlab.net/d/Oxed_c6Wz/nvidia-dcgm-exporter-dashboard?orgId=1&from=now-3h&to=now) Check the GPU status, including temperature, power, and usage.
+        - ![Grafana-GPU](/docs/assets/gpu-grafana.png)
 
 ### ⚠️ Note
  - The development environment created here is temporary. Only data stored under the default directory `/home/code-server` will be preserved properly. Other parts of the environment, such as installed Python packages, will be lost if the Pod is rebuilt. Rebuilds can occur when you change the container image, adjust GPU settings, or during system updates. Therefore, it is strongly recommended to use `requirements.txt`, [Poetry](https://python-poetry.org/), or another package management tool to ensure that the packages required for development are consistently available.
@@ -168,6 +170,8 @@ This project is hosted on a on-premises Kubernetes cluster and utilizes a GitOps
         - ![Grafana](./docs/assets/grafana.png)
     - [Kubernetes / Compute Resources / Namespace (Pods)](https://grafana.dgx.wasnlab.net/d/85a562078cdf77779eaa1add43ccec1e/kubernetes-compute-resources-namespace-pods?orgId=1&refresh=30s&from=now-1h&to=now)能指定namespace，查看該namespace中的資源使用細節
         - ![Grafana-pod](/docs/assets/grafana-pod.png)
+    - [NVIDIA GPU Dashboard](https://grafana.dgx.wasnlab.net/d/Oxed_c6Wz/nvidia-dcgm-exporter-dashboard?orgId=1&from=now-3h&to=now) 確認GPU狀況，包含溫度、電力和使用量
+        - ![Grafana-GPU](/docs/assets/gpu-grafana.png)
 
 ### ⚠️ Note
  - 這邊建立的開發環境是暫時的，將資料存放在`/home/code-server`預設目錄底下才會被妥善的保存，其餘環境例如：已安裝的python套件將會在Pod被重新建立時消失。 Pod可能會在你更改container image、GPU的設定有改動或系統更新時重建，因此強烈建議使用`requirements.txt`, [Poetry](https://python-poetry.org/)或其他套件管理工具來確保你開發所需要的套件是固定的
