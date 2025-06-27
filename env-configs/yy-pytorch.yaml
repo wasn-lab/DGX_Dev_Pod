@@ -14,4 +14,4 @@ docker_image: hazdzz/dgx-torch:1.0.4
 gpu_enabled: true
 
 # 是否要使用共享記憶體（預設: false）
-shared_memory_enabled: false
+shared_memory_enabled: true
