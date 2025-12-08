@@ -99,6 +99,7 @@ This project is hosted on a on-premises Kubernetes cluster and utilizes a GitOps
 
     - Currently confirmed usable container images:
         - `hazdzz/dgx-torch:1.0.5`
+        - `hazdzz/dgx-torch:1.0.6`
         - `pytorch/pytorch:2.3.1-cuda12.1-cudnn8-devel`
         - `nvcr.io/nvidia/pytorch:23.11-py3`
 
@@ -178,6 +179,7 @@ This project is hosted on a on-premises Kubernetes cluster and utilizes a GitOps
  - 使用太舊的container image來創造環境可能會讓code-server無法正常安裝，你將會在ArgoCD看到pod不斷的被重啟，請更換較新的container image或是跟管理員聯絡。如果你不知道該用什麼container image，你可以參考[env-configs](/env-configs/)中其他同學的設定
     - 目前確認可用的container image清單：
         - `hazdzz/dgx-torch:1.0.5`
+        - `hazdzz/dgx-torch:1.0.6`
         - `pytorch/pytorch:2.3.1-cuda12.1-cudnn8-devel`
         - `nvcr.io/nvidia/pytorch:23.11-py3`
 
