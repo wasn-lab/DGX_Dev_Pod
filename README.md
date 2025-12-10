@@ -98,7 +98,6 @@ This project is hosted on a on-premises Kubernetes cluster and utilizes a GitOps
 - Using an outdated container image may prevent code-server from installing correctly. In such cases, you will see the Pod repeatedly restarting in ArgoCD. Please switch to a more recent container image or contact the administrator. If you're unsure which container image to use, you can check other students' configurations in env-configs.
 
     - Currently confirmed usable container images:
-        - `hazdzz/dgx-torch:1.0.5`
         - `hazdzz/dgx-torch:1.0.6`
         - `pytorch/pytorch:2.3.1-cuda12.1-cudnn8-devel`
         - `nvcr.io/nvidia/pytorch:23.11-py3`
@@ -178,7 +177,6 @@ This project is hosted on a on-premises Kubernetes cluster and utilizes a GitOps
  - 這邊建立的開發環境是暫時的，將資料存放在`/home/code-server`預設目錄底下才會被妥善的保存，其餘環境例如：已安裝的python套件將會在Pod被重新建立時消失。 Pod可能會在你更改container image、GPU的設定有改動或系統更新時重建，因此強烈建議使用`requirements.txt`, [Poetry](https://python-poetry.org/)或其他套件管理工具來確保你開發所需要的套件是固定的
  - 使用太舊的container image來創造環境可能會讓code-server無法正常安裝，你將會在ArgoCD看到pod不斷的被重啟，請更換較新的container image或是跟管理員聯絡。如果你不知道該用什麼container image，你可以參考[env-configs](/env-configs/)中其他同學的設定
     - 目前確認可用的container image清單：
-        - `hazdzz/dgx-torch:1.0.5`
         - `hazdzz/dgx-torch:1.0.6`
         - `pytorch/pytorch:2.3.1-cuda12.1-cudnn8-devel`
         - `nvcr.io/nvidia/pytorch:23.11-py3`
