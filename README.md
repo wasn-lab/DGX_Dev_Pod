@@ -100,7 +100,9 @@ This project is hosted on a on-premises Kubernetes cluster and utilizes a GitOps
     - Currently confirmed usable container images:
         - `hazdzz/dgx-torch:1.0.6`
         - `pytorch/pytorch:2.3.1-cuda12.1-cudnn8-devel`
-        - `nvcr.io/nvidia/pytorch:23.11-py3`
+        - `pytorch/pytorch:2.4.1-cuda12.4-cudnn9-devel`
+        - `nvcr.io/nvidia/pytorch:24.04-py3`
+        - `nvcr.io/nvidia/pytorch:24.05-py3`
 
 ## Update Your Environment
 - If you need to switch to a different Docker image for your development environment, you can directly edit the environment configuration file you created. After making the changes, simply `git push`, and ArgoCD will automatically update your Pod environment. This process takes about 5 minutes. You can log in to the ArgoCD dashboard with your GitHub account at https://argocd.dgx.wasnlab.net/ to check if your environment has been successfully set up or if there are any error messages.
@@ -179,7 +181,9 @@ This project is hosted on a on-premises Kubernetes cluster and utilizes a GitOps
     - 目前確認可用的container image清單：
         - `hazdzz/dgx-torch:1.0.6`
         - `pytorch/pytorch:2.3.1-cuda12.1-cudnn8-devel`
-        - `nvcr.io/nvidia/pytorch:23.11-py3`
+        - `pytorch/pytorch:2.4.1-cuda12.4-cudnn9-devel`
+        - `nvcr.io/nvidia/pytorch:24.04-py3`
+        - `nvcr.io/nvidia/pytorch:24.05-py3`
 
 ## Update Your Environment
 - 如果你需要改用其他的Docker image作為開發環境，你可以直接修改你所創建的環境設定檔，重新`git push`之後就會驅動ArgoCD更新你的pod環境，大約需要等待5分鐘，你可以透過GitHub登入ArgoCD的儀表板：https://argocd.dgx.wasnlab.net/ 確認你的環境是否成功建立或遇到任何錯誤訊息
