@@ -1,5 +1,5 @@
 # 你的名字
-createdBy: Kevin
+createdBy: kevin
 #-----------------------------
 
 # 請為你的kubernetes的namespace命名，用來分隔不同學生的環境，這個名稱也會用於創建屬於你的domain name網址
